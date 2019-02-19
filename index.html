@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+<img src="http://www.beacukai.go.id/assets/img/logo-Kemenkeu-BC.png" alt="Smiley face" width="778" height="150">
+<p><h2>DATABASE PEGAWAI BEACUKAI ANGKATAN 14</h2></p>
+ <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script> 
+ <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase.js"></script>
+<script>   
+// Initialize Firebase   
+var config = {     
+apiKey: "AIzaSyDaB1ln1oLrFNN5KO6m_-ULZcZZybMBx6U",     
+authDomain: "customs14database.firebaseapp.com",     
+databaseURL: "https://customs14database.firebaseio.com",     
+projectId: "customs14database",     
+storageBucket: "",     
+messagingSenderId: "325385585793"   
+};   
+firebase.initializeApp(config); 
+</script>
+<script type="text/javascript">
+var tableToExcel = (function() {
+  var uri = 'data:application/vnd.ms-excel;base64,'
+    , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'
+    , base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))) }
+    , format = function(s, c) { return s.replace(/{(\w+)}/g, function(m, p) { return c[p]; }) }
+  return function(table, name) {
+    if (!table.nodeType) table = document.getElementById(table)
+    var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML}
+    window.location.href = uri + base64(format(template, ctx))
+  }
+})()
+</script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+#myInput {
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myInputx {
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+#myInputhomebase {
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+
+#tbl_BC14_list {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#tbl_BC14_list th, #tbl_BC14_list td {
+  text-align: left;
+  padding: 12px;
+}
+
+#tbl_BC14_list tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#tbl_BC14_list tr:hover {
+  background-color: #D3D3D3;
+}
+
+table.GeneratedTable thead {   
+background-color: #1E90FF; } 
+
+</style>
+</head>
+<body>
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="&#128269 cari berdasarkan nama.." title="Ketik nama">
+<input type="text" id="myInputx" onkeyup="myFunctionx()" placeholder="&#128269 cari berdasarkan diklat.." title="Ketik diklat">
+<input type="text" id="myInputhomebase" onkeyup="myFunctionhomebase()" placeholder="&#128269 cari berdasarkan homebase.." title="Ketik homebase">
+<input type="button" onclick="tableToExcel('tbl_BC14_list')" value="Download File Excel">
+
+
+<table id="tbl_BC14_list" border="1" class="GeneratedTable">   
+<thead> 	
+<tr> 		
+<th>NIP</th>    
+<th>NAMA</th>
+<th>PANGKAT</th>   
+<th>TMT PANGKAT</th>
+<th>JABATAN</th>
+<th>KANTOR</th>    
+<th>TMT JABATAN</th>   
+ <th>DIKLAT YANG SUDAH DIJALANI</th>    
+<th>PENDIDIKAN</th>    
+<th>KOMPETENSI</th>
+<th>HOMEBASE</th>
+<th>NO HP/WA</th>    
+<th>EMAIL</th>    
+<th>ALAMAT RUMAH</th>    
+<th>NO HP/EMERGENCY CALL</th>    
+<th>DIKLAT YANG DIINGINKAN</th>    
+<th>NEXT MUTASI YANG DIINGINKAN</th>   
+<th>RIWAYAT JABATAN</th>    
+<th>PENYESUAIAN PANGKAT</th>
+<th>PREFERENSI MUTASI   </th>
+<th>PREFRENSI JABATAN</th>    
+<th>KEAHLIAN</th>    
+<th>PRESTASI PENGHARGAAN</th>    
+<th>PRINT DATA URL</th>    
+</tr>    
+</thead>
+    
+<tbody>   
+<tr>
+<td></td>
+<td></td>    
+<td></td>    
+<td></td>    
+<td></td>    
+<td></td>    
+<td></td>    
+<td></td>    
+<td></td>    
+<td></td>    
+<td></td>    
+<td></td>    
+<td></td>    
+<td></td>    
+<td></td>    
+<td></td>    
+<td></td>    
+<td></td>    
+<td></td>    
+<td></td>    
+<td></td>    
+<td></td>    
+<td></td>    
+<td></td>
+</tr>
+</tbody>
+  
+</table>    
+<script>
+
+  var tblmasterSheet = document.getElementById('tbl_BC14_list');
+  var databaseRef = firebase.database().ref('masterSheet/');
+  var rowIndex = 1;
+  
+  databaseRef.once('value', function(snapshot) {
+    snapshot.forEach(function(childSnapshot) {
+   var childKey = childSnapshot.key;
+   var childData = childSnapshot.val();
+   
+   var row = tblmasterSheet.insertRow(rowIndex);
+   var cellNIP = row.insertCell(0);    
+   var cellNama = row.insertCell(1);    
+   var cellPangkat = row.insertCell(2);    
+   var cellPangkatTMT = row.insertCell(3);    
+   var cellJabatan = row.insertCell(4);    
+   var cellKantor = row.insertCell(5);    
+   var cellTMT = row.insertCell(6);    
+   var cellDiklat = row.insertCell(7);    
+   var cellPendidikan = row.insertCell(8);    
+   var cellKeahlian = row.insertCell(9);    
+   var cellHomebase = row.insertCell(10);    
+   var cellHP = row.insertCell(11);    
+   var cellEmail = row.insertCell(12);    
+   var cellRumah = row.insertCell(13);    
+   var cellHPX = row.insertCell(14);    
+   var cellDiklatX = row.insertCell(15);    
+   var cellMutasi = row.insertCell(16);    
+   var cellRiwayatJabatan = row.insertCell(17);    
+   var cellUpdatePendidikan = row.insertCell(18);    
+   var cellPreferensiMutasi = row.insertCell(19);    
+   var cellPreferensiJabatan = row.insertCell(20);    
+   var cellKeahlianLainnya = row.insertCell(21);    
+   var cellPrestasiPenghargaan = row.insertCell(22);    
+   var cellurl = row.insertCell(23);    
+   cellNIP.appendChild(document.createTextNode(childKey));
+   cellNama.appendChild(document.createTextNode(childData.Nama));    
+   cellPangkat.appendChild(document.createTextNode(childData.Pangkat));    
+   cellPangkatTMT.appendChild(document.createTextNode(childData.PangkatTMT));    
+   cellJabatan.appendChild(document.createTextNode(childData.Jabatan));    
+   cellKantor.appendChild(document.createTextNode(childData.Kantor));    
+   cellTMT.appendChild(document.createTextNode(childData.TMT));    
+   cellDiklat.appendChild(document.createTextNode(childData.Diklat));    
+   cellPendidikan.appendChild(document.createTextNode(childData.Pendidikan));    
+   cellKeahlian.appendChild(document.createTextNode(childData.Keahlian));    
+   cellHomebase.appendChild(document.createTextNode(childData.Homebase));    
+   cellHP.appendChild(document.createTextNode(childData.HP));    
+   cellEmail.appendChild(document.createTextNode(childData.Email));    
+   cellRumah.appendChild(document.createTextNode(childData.Rumah));    
+   cellHPX.appendChild(document.createTextNode(childData.HPX));    
+   cellDiklatX.appendChild(document.createTextNode(childData.DiklatX));    
+   cellMutasi.appendChild(document.createTextNode(childData.Mutasi));    
+   cellRiwayatJabatan.appendChild(document.createTextNode(childData.RiwayatJabatan));    
+   cellUpdatePendidikan.appendChild(document.createTextNode(childData.UpdatePendidikan));    
+   cellPreferensiMutasi.appendChild(document.createTextNode(childData.PreferensiMutasi));    
+   cellPreferensiJabatan.appendChild(document.createTextNode(childData.PreferensiJabatan));    
+   cellKeahlianLainnya.appendChild(document.createTextNode(childData.KeahlianLainnya));    
+   cellPrestasiPenghargaan.appendChild(document.createTextNode(childData.PrestasiPenghargaan));    
+   cellurl.appendChild(document.createTextNode(childData.url));
+   
+   rowIndex = rowIndex + 1;     
+	});   
+  });      
+</script>  
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("tbl_BC14_list");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
+<script>
+function myFunctionx() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInputx");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("tbl_BC14_list");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[7];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
+<script>
+function myFunctionhomebase() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInputhomebase");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("tbl_BC14_list");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[10];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
+</body> 
+</html>
